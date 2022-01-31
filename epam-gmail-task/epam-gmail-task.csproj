@@ -19,4 +19,8 @@
 	  <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="97.0.4692.7100" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
+
 </Project>
