@@ -22,8 +22,9 @@ namespace epam_gmail_task.WebDriver
                     {
                         var service = ChromeDriverService.CreateDefaultService();
                         var option = new ChromeOptions();
-                        // TODO: add chrome security infobars
                         option.AddArgument("disable-infobars");
+                        option.AddExcludedArgument("enable-automation");
+
                         driver = new ChromeDriver(service, option, TimeSpan.FromSeconds(timeOutSec));
                         break;
                     }
