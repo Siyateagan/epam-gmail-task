@@ -13,8 +13,9 @@ namespace epam_gmail_task.PageObjects
         private readonly BaseElement _emailInput = 
             new BaseElement(By.XPath("//input[@type='email']"));
 
-        private readonly BaseElement _NextButton =
-            new BaseElement(By.XPath("//button[@type='button' and @jsname='LgbsSe']"));
+        private readonly BaseElement _nextButton =
+            new BaseElement(By.XPath("//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ" +
+                " VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc qIypjc TrZEUc lw1w4b']"));
 
         public void EnterEmail(string email) => _emailInput.SendKeys(email);
     }
