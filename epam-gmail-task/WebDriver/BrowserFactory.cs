@@ -14,7 +14,7 @@ namespace epam_gmail_task.WebDriver
 
         public static IWebDriver GetDriver(BrowserType type, int timeOutSec)
         {
-            IWebDriver driver = null;
+            IWebDriver driver = null!;
 
             switch (type)
             {
