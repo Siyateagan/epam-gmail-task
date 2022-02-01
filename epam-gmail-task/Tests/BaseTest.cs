@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace epam_gmail_task.Tests
 {
-    public class BaseTest
+    public abstract class BaseTest
     {
         [TestInitialize]
         public virtual void InitTest()
