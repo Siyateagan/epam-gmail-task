@@ -1,16 +1,22 @@
-﻿using OpenQA.Selenium;
-using System.Linq;
+﻿using epam_gmail_task.PageObjects;
+using OpenQA.Selenium;
 
 namespace epam_gmail_task.WebDriver
 {
     public abstract class BasePage
     {
-        private static IWebDriver _driver;
+        protected By _titleLocator;
 
-        protected BasePage(IWebDriver driver) => _driver = driver;
+        protected BasePage(By titleLocator)
+        {
+            _titleLocator = titleLocator;
+            AssertIsOpen();
+        }
 
-        public IWebDriver GetDriver() => _driver;
-
-        public bool IsElementPresent(By locator) => _driver.FindElements(locator).Count() > 0;
+        private void AssertIsOpen()
+        {
+            BaseElement label = new BaseElement(_titleLocator);
+            label.WaitForIsVisible();
+        }
     }
 }
