@@ -8,7 +8,6 @@ namespace epam_gmail_task.WebDriver
         public static string GetEnviromentVar(string var, string defautlValue) =>
             ConfigurationManager.AppSettings[var] ?? defautlValue;
 
-
         public static string ElementTimeout => GetEnviromentVar("ElementTimeout", "30");
 
         public static string Browser => GetEnviromentVar("Browser", "Chrome");
