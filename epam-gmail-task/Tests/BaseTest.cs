@@ -34,10 +34,10 @@ namespace epam_gmail_task.Tests
             signInPage.ClickNext();
         }
 
-        protected void SignOut(MainPage mainPage)
+        protected void SignOut(MainPageBase mainPageBase)
         {
-            mainPage.ManageAccountClick();
-            mainPage.SignOutClick();
+            mainPageBase.ManageAccountClick();
+            mainPageBase.SignOutClick();
         }
     }
 }
