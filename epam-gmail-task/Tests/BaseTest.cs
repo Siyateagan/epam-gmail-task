@@ -2,6 +2,7 @@
 using epam_gmail_task.WebDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Threading;
 
 namespace epam_gmail_task.Tests
 {
@@ -28,8 +29,7 @@ namespace epam_gmail_task.Tests
             signInPage.EnterEmail("gt016618@gmail.com");
             signInPage.ClickNext();
 
-            var password = Environment.GetEnvironmentVariable("SECRET_PASSWORD");
-            signInPage.EnterPassword(password);
+            signInPage.EnterPassword("mAPM6SWd");
             signInPage.ClickNext();
         }
     }
