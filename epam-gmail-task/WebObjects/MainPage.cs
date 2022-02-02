@@ -45,6 +45,9 @@ namespace epam_gmail_task.PageObjects
         private readonly BaseElement _deleteSelectedDraftsDiv =
             new BaseElement(By.XPath("(//div[text()='Удалить черновики'])[1]"));
 
+        private readonly BaseElement _noSavedDraftMessage =
+            new BaseElement(By.XPath("//td[contains(text(), 'Нет сохраненных черновиков.')]"));
+
         public void ClickWrite() => _writeDiv.Click();
         public void EnterMessageData(string receiver, string subject, string textOfTheLetter)
         {
@@ -72,5 +75,6 @@ namespace epam_gmail_task.PageObjects
 
         public string GetCurrentAccountMail() => _accountMailDiv.GetText();
         public string GetMessageSubject() => _mailMessageSpan.GetText();
+        public string GetNoSavedDraftMessage() => _noSavedDraftMessage.GetText();
     }
 }
