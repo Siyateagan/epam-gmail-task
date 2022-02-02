@@ -1,7 +1,6 @@
 ﻿using epam_gmail_task.PageObjects;
+using epam_gmail_task.WebDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Threading;
 
 namespace epam_gmail_task.Tests
 {
@@ -36,7 +35,7 @@ namespace epam_gmail_task.Tests
 
             mainPage.ManageAccountClick();
             mainPage.SignOutClick();
-
+            Browser.RestartSession();
         }
     }
 }
