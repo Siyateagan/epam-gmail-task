@@ -11,10 +11,6 @@ namespace epam_gmail_task.PageObjects
         private readonly BaseElement _signInLink = new BaseElement(By.XPath("//a[text()='Войти']"));
         public AboutPage() : base(AboutLabel) { }
 
-        public SignInPage GoToSignInPage()
-        {
-            _signInLink.Click();
-            return new SignInPage();
-        }
+        public void GoToSignInPage() => _signInLink.Click();
     }
 }
