@@ -15,6 +15,7 @@ namespace epam_gmail_task.WebDriver
         private Browser()
         {
             InitParams();
+            Enum.TryParse(Configuration.Browser, out _currentBrowser);
             _driver = BrowserFactory.GetDriver(_currentBrowser, ImplWait);
         }
 
