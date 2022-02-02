@@ -6,7 +6,7 @@ using System.Threading;
 namespace epam_gmail_task.Tests
 {
     [TestClass]
-    public class SaveDraftTest : BaseTest
+    public class TS01SaveDraftTest : BaseTest
     {
         [TestMethod]
         public void TC01_Navigate_ToSignInPage_PageExist()
