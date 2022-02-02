@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using System;
 
 namespace epam_gmail_task.WebDriver
@@ -30,8 +31,10 @@ namespace epam_gmail_task.WebDriver
                     }
                 case BrowserType.Firefox:
                     {
-                        //TODO: Add FirefoxDriver initialization
-                        throw new NotImplementedException();
+                        var service = FirefoxDriverService.CreateDefaultService();
+                        var option = new FirefoxOptions();
+
+                        driver = new FirefoxDriver(service, option, TimeSpan.FromSeconds(timeOutSec));
                         break;
                     }
             }
