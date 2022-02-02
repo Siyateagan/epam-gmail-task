@@ -23,6 +23,7 @@ namespace epam_gmail_task.WebDriver
                         var service = ChromeDriverService.CreateDefaultService();
                         var option = new ChromeOptions();
                         option.AddArgument("disable-infobars");
+                        option.AddArgument("--headless");
                         option.AddExcludedArgument("enable-automation");
 
                         driver = new ChromeDriver(service, option, TimeSpan.FromSeconds(timeOutSec));
