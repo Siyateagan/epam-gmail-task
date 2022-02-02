@@ -13,12 +13,14 @@ namespace epam_gmail_task.Tests
 
             MainPage mainPage = new MainPage();
             mainPage.ClickDraftLink();
-            string subject = mainPage.GetMessageSubject();
+            DraftPage draftPage = new DraftPage();
+
+            string subject = draftPage.GetMessageSubject();
             Assert.AreEqual("Test Subject", subject);
 
-            mainPage.SelectMessage();
-            mainPage.DeleteSelectedDrafts();
-            Assert.IsTrue(mainPage.GetNoSavedDraftMessage().Contains("Нет сохраненных черновиков."));
+            draftPage.SelectMessage();
+            draftPage.DeleteSelectedDrafts();
+            Assert.IsTrue(draftPage.GetNoSavedDraftMessage().Contains("Нет сохраненных черновиков."));
 
             SignOut(mainPage);
         }
