@@ -10,7 +10,7 @@ namespace epam_gmail_task.Tests
 
         [DataTestMethod]
         [DataRow("gt016618@gmail.com", "mAPM6SWd")]
-        public void TC02_Check_CurrentAccount_Matches(string mail, string password)
+        public void TC01_Check_CurrentAccount_Matches(string mail, string password)
         {
             SignIn(mail, password);
             MainPage mainPage = new MainPage();
@@ -19,7 +19,7 @@ namespace epam_gmail_task.Tests
         }
 
         [TestMethod]
-        public void TC03_Check_MailMessage_Saved()
+        public void TC02_Check_MailMessage_Saved()
         {
             MainPage mainPage = new MainPage();
             mainPage.ClickWrite();

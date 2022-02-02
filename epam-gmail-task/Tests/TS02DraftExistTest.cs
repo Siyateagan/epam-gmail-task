@@ -8,7 +8,7 @@ namespace epam_gmail_task.Tests
     {
         [DataTestMethod]
         [DataRow("gt016618@gmail.com", "mAPM6SWd")]
-        public void TC04_Remove_Draft_NotExist(string mail, string password)
+        public void TC03_Remove_Draft_NotExist(string mail, string password)
         {
             SignIn(mail, password);
 
