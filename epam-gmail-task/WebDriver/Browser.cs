@@ -34,5 +34,11 @@ namespace epam_gmail_task.WebDriver
         public static IWebDriver GetDriver() => _driver;
 
         public static void Quit() => _driver.Quit();
+
+        public static void RestartSession()
+        {
+            _driver.Quit();
+            _driver = BrowserFactory.GetDriver(_currentBrowser, ImplWait);
+        }
     }
 }
