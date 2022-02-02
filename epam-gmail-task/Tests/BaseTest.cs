@@ -1,20 +1,23 @@
-﻿using epam_gmail_task.WebDriver;
+﻿using epam_gmail_task.PageObjects;
+using epam_gmail_task.WebDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace epam_gmail_task.Tests
 {
+    [TestClass]
     public abstract class BaseTest
     {
-        [TestInitialize]
-        public virtual void InitTest()
+        [ClassInitialize(InheritanceBehavior.BeforeEachDerivedClass)]
+        public static void TestFixtureSetup(TestContext context)
         {
             Browser Browser = Browser.Instance;
             Browser.WindowMaximise();
             Browser.NavigateTo(Configuration.StartUrl);
         }
 
-        [TestCleanup]
-        public virtual void CleanTest()
+        [ClassCleanup(InheritanceBehavior.BeforeEachDerivedClass)]
+        public static void TestFixtureTearDown()
         {
             Browser.Quit();
         }
