@@ -27,8 +27,7 @@ namespace epam_gmail_task.Tests
             mainPage.WaitForDraftSave();
             Assert.AreEqual(mainPage.GetDraftStatus(), "Черновик сохранен");
 
-            mainPage.ManageAccountClick();
-            mainPage.SignOutClick();
+            SignOut(mainPage);
             Browser.RestartSession();
         }
     }

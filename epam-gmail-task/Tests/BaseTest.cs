@@ -33,5 +33,11 @@ namespace epam_gmail_task.Tests
             signInPage.EnterPassword("mAPM6SWd");
             signInPage.ClickNext();
         }
+
+        protected void SignOut(MainPage mainPage)
+        {
+            mainPage.ManageAccountClick();
+            mainPage.SignOutClick();
+        }
     }
 }

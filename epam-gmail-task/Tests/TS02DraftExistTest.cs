@@ -20,8 +20,7 @@ namespace epam_gmail_task.Tests
             mainPage.DeleteSelectedDrafts();
             Assert.IsTrue(mainPage.GetNoSavedDraftMessage().Contains("Нет сохраненных черновиков."));
 
-            mainPage.ManageAccountClick();
-            mainPage.SignOutClick();
+            SignOut(mainPage);
         }
     }
 }
