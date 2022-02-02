@@ -27,8 +27,9 @@ namespace epam_gmail_task.Tests
             SignInPage signInPage = new SignInPage();
             signInPage.EnterEmail("gt016618@gmail.com");
             signInPage.ClickNext();
-            // TODO: Add password.
-            signInPage.EnterPassword("");
+
+            var password = Environment.GetEnvironmentVariable("SECRET_PASSWORD");
+            signInPage.EnterPassword(password);
             signInPage.ClickNext();
         }
     }
