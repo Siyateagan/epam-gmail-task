@@ -33,6 +33,18 @@ namespace epam_gmail_task.PageObjects
         private readonly BaseElement _accountMailDiv =
             new BaseElement(By.XPath("//div[@class='gb_mb']"));
 
+        private readonly BaseElement _draftLink =
+            new BaseElement(By.XPath("//a[text()='Черновики']"));
+
+        private readonly BaseElement _mailMessageSpan =
+            new BaseElement(By.XPath("(//td//span[text()='Test Subject'])[2]"));
+
+        private readonly BaseElement _selectMessageDiv =
+            new BaseElement(By.XPath("//div[@aria-checked='false']"));
+
+        private readonly BaseElement _deleteSelectedDraftsDiv =
+            new BaseElement(By.XPath("(//div[text()='Удалить черновики'])[1]"));
+
         public void ClickWrite() => _writeDiv.Click();
         public void EnterMessageData(string receiver, string subject, string textOfTheLetter)
         {
@@ -54,6 +66,11 @@ namespace epam_gmail_task.PageObjects
         public string GetDraftStatus() => _draftSavedSpan.GetText();
         public void ManageAccountClick() => _manageAccountLink.Click();
         public void SignOutClick() => _signOutLink.Click();
+        public void ClickDraftLink() => _draftLink.Click();
+        public void SelectMessage() => _selectMessageDiv.Click();
+        public void DeleteSelectedDrafts() => _deleteSelectedDraftsDiv.Click();
+
         public string GetCurrentAccountMail() => _accountMailDiv.GetText();
+        public string GetMessageSubject() => _mailMessageSpan.GetText();
     }
 }
