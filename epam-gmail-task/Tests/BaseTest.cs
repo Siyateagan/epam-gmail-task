@@ -21,5 +21,15 @@ namespace epam_gmail_task.Tests
         {
             Browser.Quit();
         }
+
+        protected void SignIn()
+        {
+            SignInPage signInPage = new SignInPage();
+            signInPage.EnterEmail("gt016618@gmail.com");
+            signInPage.ClickNext();
+            // TODO: Add password.
+            signInPage.EnterPassword("");
+            signInPage.ClickNext();
+        }
     }
 }
