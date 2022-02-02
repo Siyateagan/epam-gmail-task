@@ -9,8 +9,6 @@ namespace epam_gmail_task.Tests
         [TestMethod]
         public void TC04_Remove_Draft_NotExist()
         {
-            AboutPage aboutPage = new AboutPage();
-            aboutPage.GoToSignInPage();
             SignIn();
 
             MainPage mainPage = new MainPage();

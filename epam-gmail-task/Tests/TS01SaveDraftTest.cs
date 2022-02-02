@@ -7,12 +7,6 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public class TS01SaveDraftTest : BaseTest
     {
-        [TestMethod]
-        public void TC01_Navigate_ToSignInPage_PageExist()
-        {
-            AboutPage aboutPage = new AboutPage();
-            aboutPage.GoToSignInPage();
-        }
 
         [TestMethod]
         public void TC02_Check_CurrentAccount_Matches()
