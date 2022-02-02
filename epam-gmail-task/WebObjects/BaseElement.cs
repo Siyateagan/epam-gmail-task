@@ -44,5 +44,11 @@ namespace epam_gmail_task.PageObjects
             WaitForIsVisible();
             Browser.GetDriver().FindElement(_locator).Click();
         }
+
+        public string GetText()
+        {
+            WaitForIsVisible();
+            return Browser.GetDriver().FindElement(_locator).Text;
+        }
     }
 }
