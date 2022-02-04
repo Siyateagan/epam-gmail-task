@@ -7,9 +7,9 @@ namespace epam_gmail_task.WebDriver
     {
         private static Browser _currentInstance = null!;
         private static IWebDriver _driver = null!;
-        public static BrowserFactory.BrowserType _currentBrowser;
-        public static int ImplWait;
-        public static double _timeoutForElement;
+        private static BrowserFactory.BrowserType _currentBrowser;
+        private static int ImplWait;
+        private static double _timeoutForElement;
 
         private Browser()
         {
