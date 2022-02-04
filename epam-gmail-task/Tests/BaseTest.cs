@@ -21,16 +21,16 @@ namespace epam_gmail_task.Tests
             Browser.Quit();
         }
 
-        protected void SignIn(string mail, string password)
+        protected void SignIn()
         {
             AboutPage aboutPage = new AboutPage();
             aboutPage.GoToSignInPage();
 
             SignInPage signInPage = new SignInPage();
-            signInPage.EnterEmail(mail);
+            signInPage.EnterEmail(Configuration.Login);
             signInPage.ClickNext();
 
-            signInPage.EnterPassword(password);
+            signInPage.EnterPassword(Configuration.Password);
             signInPage.ClickNext();
         }
 

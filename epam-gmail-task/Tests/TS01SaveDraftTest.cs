@@ -8,14 +8,14 @@ namespace epam_gmail_task.Tests
     public class TS01SaveDraftTest : BaseTest
     {
 
-        [DataTestMethod]
-        [DataRow("gt016618@gmail.com", "mAPM6SWd")]
-        public void TC01_Check_CurrentAccount_Matches(string mail, string password)
+        [TestMethod]
+        public void TC01_Check_CurrentAccount_Matches()
         {
-            SignIn(mail, password);
+            SignIn();
             MainPage mainPage = new MainPage();
             mainPage.ManageAccountClick();
-            Assert.AreEqual(mainPage.GetCurrentAccountMail(), mail);
+            string expectedMail = Configuration.Login + "@gmail.com";
+            Assert.AreEqual(mainPage.GetCurrentAccountMail(), expectedMail);
         }
 
         [TestMethod]

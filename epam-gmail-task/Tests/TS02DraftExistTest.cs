@@ -6,11 +6,10 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public class TS02DraftExistTest : BaseTest
     {
-        [DataTestMethod]
-        [DataRow("gt016618@gmail.com", "mAPM6SWd")]
-        public void TC03_Remove_Draft_NotExist(string mail, string password)
+        [TestMethod]
+        public void TC03_Remove_Draft_NotExist()
         {
-            SignIn(mail, password);
+            SignIn();
 
             MainPage mainPage = new MainPage();
             mainPage.ClickDraftLink();
