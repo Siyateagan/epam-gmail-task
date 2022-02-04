@@ -15,7 +15,7 @@ namespace epam_gmail_task.WebDriver
         {
             InitParams();
             Enum.TryParse(Configuration.Browser, out _currentBrowser);
-            _driver = BrowserFactory.GetDriver(_currentBrowser, ImplWait);
+            _driver = BrowserFactory.InitializeDriver(_currentBrowser, ImplWait);
         }
 
         private static void InitParams()
@@ -37,7 +37,7 @@ namespace epam_gmail_task.WebDriver
         public static void RestartSession()
         {
             _driver.Quit();
-            _driver = BrowserFactory.GetDriver(_currentBrowser, ImplWait);
+            _driver = BrowserFactory.InitializeDriver(_currentBrowser, ImplWait);
         }
     }
 }

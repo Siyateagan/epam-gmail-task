@@ -13,7 +13,7 @@ namespace epam_gmail_task.WebDriver
             Firefox
         }
 
-        public static IWebDriver GetDriver(BrowserType type, int timeOutSec)
+        public static IWebDriver InitializeDriver(BrowserType type, int timeOutSec)
         {
             IWebDriver driver = null!;
 
