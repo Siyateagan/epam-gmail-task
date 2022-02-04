@@ -17,8 +17,7 @@ namespace epam_gmail_task.PageObjects
             new BaseElement(By.XPath("//input[@type='password']"));
 
         private readonly BaseElement _nextButton =
-            new BaseElement(By.XPath("//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ" +
-                " VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc qIypjc TrZEUc lw1w4b']"));
+            new BaseElement(By.XPath("//span[text()='Далее']"));
 
         public void EnterEmail(string email) => _emailInput.SendKeys(email);
         public void EnterPassword(string password) => _passwordInput.SendKeys(password);
