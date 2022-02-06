@@ -9,7 +9,7 @@ namespace epam_gmail_task.PageObjects
 {
     public class BaseElement : IWebElement
     {
-        protected By _locator;
+        public By _locator { get; private set; }
         private IWebDriver _driver = Browser.GetDriver();
         protected IWebElement _element;
 
