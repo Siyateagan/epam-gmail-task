@@ -11,6 +11,7 @@ namespace epam_gmail_task.PageObjects
     {
         protected By _locator;
         private IWebDriver _driver = Browser.GetDriver();
+        protected IWebElement _element;
 
         public BaseElement(By locator)
         {
@@ -51,6 +52,19 @@ namespace epam_gmail_task.PageObjects
         {
             WaitForIsVisible();
             return Browser.GetDriver().FindElement(_locator).Text;
+        }
+
+        public IWebElement GetElement()
+        {
+            try
+            {
+                _element = Browser.GetDriver().FindElement(_locator);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return _element;
         }
 
         public void Clear()
