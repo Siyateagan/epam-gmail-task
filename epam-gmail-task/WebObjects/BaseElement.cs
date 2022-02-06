@@ -9,13 +9,13 @@ namespace epam_gmail_task.PageObjects
 {
     public class BaseElement : IWebElement
     {
-        public By _locator { get; private set; }
+        public By Locator { get; private set; }
         private IWebDriver _driver = Browser.GetDriver();
         protected IWebElement _element;
 
         public BaseElement(By locator)
         {
-            _locator = locator;
+            Locator = locator;
         }
 
         public void WaitForIsVisible()
@@ -25,7 +25,7 @@ namespace epam_gmail_task.PageObjects
             {
                 try
                 {
-                    IWebElement elementToBeDisplayed = _driver.FindElement(_locator);
+                    IWebElement elementToBeDisplayed = _driver.FindElement(Locator);
                     return elementToBeDisplayed.Displayed;
                 }
                 catch (Exception exception)
@@ -39,26 +39,26 @@ namespace epam_gmail_task.PageObjects
         public void SendKeys(string text)
         {
             WaitForIsVisible();
-            Browser.GetDriver().FindElement(_locator).SendKeys(text);
+            Browser.GetDriver().FindElement(Locator).SendKeys(text);
         }
 
         public void Click()
         {
             WaitForIsVisible();
-            Browser.GetDriver().FindElement(_locator).Click();
+            Browser.GetDriver().FindElement(Locator).Click();
         }
 
         public string GetText()
         {
             WaitForIsVisible();
-            return Browser.GetDriver().FindElement(_locator).Text;
+            return Browser.GetDriver().FindElement(Locator).Text;
         }
 
         public IWebElement GetElement()
         {
             try
             {
-                _element = Browser.GetDriver().FindElement(_locator);
+                _element = Browser.GetDriver().FindElement(Locator);
             }
             catch (Exception)
             {
