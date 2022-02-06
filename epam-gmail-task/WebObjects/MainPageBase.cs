@@ -7,9 +7,6 @@ namespace epam_gmail_task.PageObjects
 {
     public abstract class MainPageBase : BasePage
     {
-        private WebDriverWait _frameWait = 
-            new WebDriverWait(Browser.GetDriver(), Browser.TimeoutForElement);
-
         protected MainPageBase(By titleLocator) : base(titleLocator) { }
 
         protected readonly BaseElement _writeDiv =
@@ -39,15 +36,20 @@ namespace epam_gmail_task.PageObjects
         public void ClickDraftLink() => _draftLink.Click();
         public string GetCurrentAccountMail()
         {
-            _frameWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(_accountFrame.Locator));
+            SwitchToAccountFrame();
             var accoutMail = _accountMailDiv.GetText();
             Browser.GetDriver().SwitchTo().DefaultContent();
             return accoutMail;
         }
         public void SignOutClick()
         {
-            _frameWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(_accountFrame.Locator));
+            SwitchToAccountFrame();
             _signOutDiv.Click();
+        }
+        private void SwitchToAccountFrame()
+        {
+            WebDriverWait _frameWait = new WebDriverWait(Browser.GetDriver(), Browser.TimeoutForElement);
+            _frameWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(_accountFrame.Locator));
         }
     }
 }
