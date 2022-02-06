@@ -9,7 +9,7 @@ namespace epam_gmail_task.WebDriver
         private static IWebDriver _driver = null!;
         private static DriverFactory.BrowserType _currentBrowser;
         public static int ImplWait;
-        public static double TimeoutForElement;
+        public static TimeSpan TimeoutForElement;
 
         private Browser()
         {
@@ -21,7 +21,7 @@ namespace epam_gmail_task.WebDriver
         private static void InitParams()
         {
             ImplWait = Convert.ToInt32(Configuration.ElementTimeout);
-            TimeoutForElement = Convert.ToDouble(Configuration.ElementTimeout);
+            TimeoutForElement = TimeSpan.FromSeconds(Convert.ToDouble(Configuration.ElementTimeout));
         }
 
         public static Browser Instance => _currentInstance ??= new Browser();
