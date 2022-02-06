@@ -31,7 +31,7 @@ namespace epam_gmail_task.PageObjects
             new BaseElement(By.XPath("//a[text()='Черновики']"));
 
         protected readonly BaseElement _accountFrame =
-            new BaseElement(By.XPath("//iframe[@role='presentation' and @style='height: 100%; width: 100%;']"));
+            new BaseElement(By.XPath("(//iframe[@role='presentation'])[2]"));
 
         public void ClickWrite() => _writeDiv.Click();
         public void ManageAccountClick() => _manageAccountLink.Click();
