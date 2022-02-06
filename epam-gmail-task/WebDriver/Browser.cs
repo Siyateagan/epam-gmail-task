@@ -7,7 +7,7 @@ namespace epam_gmail_task.WebDriver
     {
         private static Browser _currentInstance = null!;
         private static IWebDriver _driver = null!;
-        private static BrowserFactory.BrowserType _currentBrowser;
+        private static DriverFactory.BrowserType _currentBrowser;
         private static int ImplWait;
         private static double _timeoutForElement;
 
@@ -15,7 +15,7 @@ namespace epam_gmail_task.WebDriver
         {
             InitParams();
             Enum.TryParse(Configuration.Browser, out _currentBrowser);
-            _driver = BrowserFactory.InitializeDriver(_currentBrowser, ImplWait);
+            _driver = DriverFactory.InitializeDriver(_currentBrowser, ImplWait);
         }
 
         private static void InitParams()
@@ -37,7 +37,7 @@ namespace epam_gmail_task.WebDriver
         public static void RestartSession()
         {
             _driver.Quit();
-            _driver = BrowserFactory.InitializeDriver(_currentBrowser, ImplWait);
+            _driver = DriverFactory.InitializeDriver(_currentBrowser, ImplWait);
         }
     }
 }

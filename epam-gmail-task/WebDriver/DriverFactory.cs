@@ -5,7 +5,7 @@ using System;
 
 namespace epam_gmail_task.WebDriver
 {
-    public class BrowserFactory
+    public class DriverFactory
     {
         public enum BrowserType
         {
