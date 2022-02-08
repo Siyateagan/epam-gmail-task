@@ -30,7 +30,6 @@ namespace epam_gmail_task.Tests
             mainPage.CloseNewMessageWindow();
 
             SignOut(mainPage);
-            Browser.RestartSession();
         }
     }
 }

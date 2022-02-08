@@ -2,6 +2,7 @@
 using epam_gmail_task.WebDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+[assembly: ClassCleanupExecution(ClassCleanupBehavior.EndOfClass)]
 namespace epam_gmail_task.Tests
 {
     [TestClass]
@@ -10,7 +11,8 @@ namespace epam_gmail_task.Tests
         [ClassInitialize(InheritanceBehavior.BeforeEachDerivedClass)]
         public static void TestFixtureSetup(TestContext context)
         {
-            Browser Browser = Browser.Instance;
+            Browser browser = Browser.Instance;
+            Browser.StartDriver();
             Browser.WindowMaximise();
             Browser.NavigateTo(Configuration.StartUrl);
         }
