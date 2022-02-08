@@ -27,6 +27,7 @@ namespace epam_gmail_task.Tests
             mainPage.EnterMessageData("siyateagan@gmail.com", "Test Subject", "Test Message");
             mainPage.WaitForDraftSave();
             Assert.AreEqual(mainPage.GetDraftStatus(), "Черновик сохранен");
+            mainPage.CloseNewMessageWindow();
 
             SignOut(mainPage);
             Browser.RestartSession();

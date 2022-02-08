@@ -30,10 +30,14 @@ namespace epam_gmail_task.PageObjects
         protected readonly BaseElement _accountFrame =
             new BaseElement(By.XPath("(//iframe[@role='presentation'])[2]"));
 
+        protected readonly BaseElement _closeNewMessageImg =
+            new BaseElement(By.XPath("//img[@alt='Закрыть']"));
+
         public void ClickWrite() => _writeDiv.Click();
         public void ManageAccountClick() => _manageAccountLink.Click();
         public void SelectMessage() => _selectMessageDiv.Click();
         public void ClickDraftLink() => _draftLink.Click();
+        public void CloseNewMessageWindow() => _closeNewMessageImg.Click();
         public string GetCurrentAccountMail()
         {
             SwitchToAccountFrame();
