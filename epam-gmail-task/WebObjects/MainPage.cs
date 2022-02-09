@@ -1,4 +1,4 @@
-﻿using epam_gmail_task.WebDriver;
+﻿using epam_gmail_task.Entities;
 using OpenQA.Selenium;
 
 namespace epam_gmail_task.PageObjects
@@ -21,11 +21,11 @@ namespace epam_gmail_task.PageObjects
         private readonly BaseElement _draftSavedSpan =
             new BaseElement(By.XPath("//span[text()='Черновик сохранен']"));
 
-        public void EnterMessageData(string receiver, string subject, string textOfTheLetter)
+        public void EnterMessageData(MailMessage mailMessage)
         {
-             _receiverTextArea.SendKeys(receiver);
-             _subjectTextArea.SendKeys(subject);
-             _textOfTheLetterDiv.SendKeys(textOfTheLetter);
+             _receiverTextArea.SendKeys(mailMessage.receiver);
+             _subjectTextArea.SendKeys(mailMessage.subject);
+             _textOfTheLetterDiv.SendKeys(mailMessage.message);
         }
 
         public string[] GetMessageData(string receiver, string subject, string textOfTheLetter)

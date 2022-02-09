@@ -23,18 +23,24 @@ namespace epam_gmail_task.Tests
             Assert.AreEqual(mainPage.GetCurrentAccountMail(), expectedMail);
         }
 
+        [DeploymentItem(@"Resourses")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+            "|DataDirectory|\\MailMessageData.csv", "MailMessageData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
         public void TC02_Check_MailMessage_Saved()
         {
             MainPage mainPage = new MainPage();
             mainPage.ClickWrite();
 
-            mainPage.EnterMessageData("siyateagan@gmail.com", "Test Subject", "Test Message");
+            string receiver = TestContext.DataRow["receiver"].ToString();
+            string subject = TestContext.DataRow["subject"].ToString();
+            string message = TestContext.DataRow["message"].ToString();
+            MailMessage mailMessage = new MailMessage(receiver, subject, message);
+
+            mainPage.EnterMessageData(mailMessage);
             mainPage.WaitForDraftSave();
             Assert.AreEqual(mainPage.GetDraftStatus(), "Черновик сохранен");
             mainPage.CloseNewMessageWindow();
-
-            SignOut(mainPage);
         }
     }
 }

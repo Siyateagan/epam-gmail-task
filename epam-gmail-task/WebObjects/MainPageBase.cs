@@ -5,8 +5,11 @@ using SeleniumExtras.WaitHelpers;
 
 namespace epam_gmail_task.PageObjects
 {
-    public abstract class MainPageBase : BasePage
+    public class MainPageBase : BasePage
     {
+        private static readonly By SignInLabel = By.XPath("//input[@aria-label]");
+        public MainPageBase() : base(SignInLabel) { }
+
         protected MainPageBase(By titleLocator) : base(titleLocator) { }
 
         protected readonly BaseElement _writeDiv =
