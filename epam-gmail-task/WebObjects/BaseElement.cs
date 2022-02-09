@@ -123,6 +123,20 @@ namespace epam_gmail_task.PageObjects
         public bool Selected { get; }
         public Point Location { get; }
         public Size Size { get; }
-        public bool Displayed { get; }
+        public bool Displayed
+        {
+            get
+            {
+                try
+                {
+                    _driver.FindElement(Locator);
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
