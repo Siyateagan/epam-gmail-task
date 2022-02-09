@@ -21,8 +21,8 @@ namespace epam_gmail_task.PageObjects
         protected readonly BaseElement _signOutDiv =
             new BaseElement(By.XPath("//div[text()='Выйти']"));
 
-        protected readonly BaseElement _selectMessageDiv =
-            new BaseElement(By.XPath("//div[@aria-checked='false']"));
+        protected readonly BaseElement _lastMessageDiv =
+            new BaseElement(By.XPath("(//div[@aria-checked='false'])[last()]"));
 
         protected readonly BaseElement _accountMailDiv =
             new BaseElement(By.XPath("//div[text()='gt016618@gmail.com']"));
@@ -38,7 +38,7 @@ namespace epam_gmail_task.PageObjects
 
         public void ClickWrite() => _writeDiv.Click();
         public void ManageAccountClick() => _manageAccountLink.Click();
-        public void SelectMessage() => _selectMessageDiv.Click();
+        public void SelectLastMessage() => _lastMessageDiv.Click();
         public void ClickDraftLink() => _draftLink.Click();
         public void CloseNewMessageWindow() => _closeNewMessageImg.Click();
         public string GetCurrentAccountMail()
