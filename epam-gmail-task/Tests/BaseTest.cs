@@ -8,6 +8,8 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public abstract class BaseTest
     {
+        public TestContext TestContext { get; set; }
+
         [ClassInitialize(InheritanceBehavior.BeforeEachDerivedClass)]
         public static void TestFixtureSetup(TestContext context)
         {
@@ -23,8 +25,14 @@ namespace epam_gmail_task.Tests
             Browser.Quit();
         }
 
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+            "|DataDirectory|\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
         protected void SignIn()
         {
+            var login = TestContext.DataRow
+            //var login = this.TestContext.["login"].toString();
+            //var password =
+
             AboutPage aboutPage = new AboutPage();
             aboutPage.GoToSignInPage();
 
