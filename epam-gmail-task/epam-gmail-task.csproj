@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>epam_gmail_task</RootNamespace>
+	<LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
@@ -20,9 +21,4 @@
 	  <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0.1" />
 	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
-
-	<Target Name="CopyCustomContent" AfterTargets="AfterBuild">
-		<Copy SourceFiles="App.config" DestinationFiles="$(OutDir)\testhost.dll.config" />
-	</Target>
-	
 </Project>
