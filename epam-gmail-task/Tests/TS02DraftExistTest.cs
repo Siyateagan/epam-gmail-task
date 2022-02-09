@@ -9,8 +9,6 @@ namespace epam_gmail_task.Tests
         [TestMethod]
         public void TC03_Remove_Draft_NotExist()
         {
-            SignIn();
-
             MainPage mainPage = new MainPage();
             mainPage.ClickDraftLink();
             DraftPage draftPage = new DraftPage();

@@ -7,11 +7,9 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public class TS01SaveDraftTest : BaseTest
     {
-
         [TestMethod]
         public void TC01_Check_CurrentAccount_Matches()
         {
-            SignIn();
             MainPage mainPage = new MainPage();
             mainPage.ManageAccountClick();
             string expectedMail = Configuration.Login + "@gmail.com";
