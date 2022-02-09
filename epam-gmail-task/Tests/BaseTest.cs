@@ -42,10 +42,12 @@ namespace epam_gmail_task.Tests
         [ClassCleanup(InheritanceBehavior.BeforeEachDerivedClass)]
         public static void TestFixtureTearDown()
         {
+            MainPageBase basePage = new MainPageBase();
+            SignOut(basePage);
             Browser.Quit();
         }
 
-        protected void SignOut(MainPageBase mainPageBase)
+        protected static void SignOut(MainPageBase mainPageBase)
         {
             mainPageBase.ManageAccountClick();
             mainPageBase.SignOutClick();
