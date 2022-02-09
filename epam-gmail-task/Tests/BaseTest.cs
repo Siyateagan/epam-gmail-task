@@ -24,7 +24,7 @@ namespace epam_gmail_task.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
             "|DataDirectory|\\UserData.csv", "UserData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
-        public void SignIn()
+        public virtual void TestPreparation()
         {
             User currentUser = GetUser();
 
