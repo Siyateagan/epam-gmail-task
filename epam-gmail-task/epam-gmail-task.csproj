@@ -21,4 +21,14 @@
 	  <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0.1" />
 	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resourses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resourses\UserData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
