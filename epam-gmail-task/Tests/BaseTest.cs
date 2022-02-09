@@ -1,4 +1,5 @@
-﻿using epam_gmail_task.PageObjects;
+﻿using epam_gmail_task.Entities;
+using epam_gmail_task.PageObjects;
 using epam_gmail_task.WebDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -19,35 +20,42 @@ namespace epam_gmail_task.Tests
             Browser.NavigateTo(Configuration.StartUrl);
         }
 
+        [DeploymentItem(@"Resourses")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+            "|DataDirectory|\\UserData.csv", "UserData#csv", DataAccessMethod.Sequential)]
+        [TestMethod]
+        public void SignIn()
+        {
+            User currentUser = GetUser();
+
+            AboutPage aboutPage = new AboutPage();
+            aboutPage.GoToSignInPage();
+
+            SignInPage signInPage = new SignInPage();
+            signInPage.EnterEmail(currentUser.email);
+            signInPage.ClickNext();
+
+            signInPage.EnterPassword(currentUser.password);
+            signInPage.ClickNext();
+        }
+
         [ClassCleanup(InheritanceBehavior.BeforeEachDerivedClass)]
         public static void TestFixtureTearDown()
         {
             Browser.Quit();
         }
 
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-            "|DataDirectory|\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
-        protected void SignIn()
-        {
-            var login = TestContext.DataRow
-            //var login = this.TestContext.["login"].toString();
-            //var password =
-
-            AboutPage aboutPage = new AboutPage();
-            aboutPage.GoToSignInPage();
-
-            SignInPage signInPage = new SignInPage();
-            signInPage.EnterEmail(Configuration.Login);
-            signInPage.ClickNext();
-
-            signInPage.EnterPassword(Configuration.Password);
-            signInPage.ClickNext();
-        }
-
         protected void SignOut(MainPageBase mainPageBase)
         {
             mainPageBase.ManageAccountClick();
             mainPageBase.SignOutClick();
+        }
+
+        protected User GetUser()
+        {
+            string login = TestContext.DataRow["login"].ToString();
+            string password = TestContext.DataRow["password"].ToString();
+            return new User(login, password);
         }
     }
 }
