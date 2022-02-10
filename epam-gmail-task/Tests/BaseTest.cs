@@ -20,22 +20,16 @@ namespace epam_gmail_task.Tests
             Browser.NavigateTo(Configuration.StartUrl);
         }
 
-        [DeploymentItem(@"Resourses")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-            "|DataDirectory|\\UserData.csv", "UserData#csv", DataAccessMethod.Sequential)]
-        [TestMethod]
-        public virtual void TC00_TestPreparation()
+        protected virtual void SignIn()
         {
-            User currentUser = new User(TestContext);
-
             AboutPage aboutPage = new AboutPage();
             aboutPage.GoToSignInPage();
 
             SignInPage signInPage = new SignInPage();
-            signInPage.EnterEmail(currentUser.email);
+            signInPage.EnterEmail(Configuration.Login);
             signInPage.ClickNext();
 
-            signInPage.EnterPassword(currentUser.password);
+            signInPage.EnterPassword(Configuration.Password);
             signInPage.ClickNext();
         }
 

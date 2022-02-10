@@ -1,5 +1,6 @@
 ﻿using epam_gmail_task.Entities;
 using epam_gmail_task.PageObjects;
+using epam_gmail_task.WebDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace epam_gmail_task.Tests
@@ -8,17 +9,14 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public class TS01SaveDraftTest : BaseTest
     {
-        [DeploymentItem(@"Resourses")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-            "|DataDirectory|\\UserData.csv", "UserData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
         public void TC01_Check_CurrentAccount_Matches()
         {
-            User currentUser = new User(TestContext);
+            SignIn();
             MainPage mainPage = new MainPage();
             mainPage.ManageAccountClick();
 
-            string expectedMail = currentUser.email + "@gmail.com";
+            string expectedMail = Configuration.Login + "@gmail.com";
             Assert.AreEqual(mainPage.GetCurrentAccountMail(), expectedMail);
         }
 

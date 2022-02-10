@@ -7,13 +7,10 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public class TS02DraftExistTest : BaseTest
     {
-        [DeploymentItem(@"Resourses")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-            "|DataDirectory|\\UserData.csv", "UserData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
-        public override void TC00_TestPreparation()
+        public void TC02_Navigate_Draft_PageExist()
         {
-            base.TC00_TestPreparation();
+            SignIn();
             MainPage mainPage = new MainPage();
             mainPage.ClickDraftLink();
         }

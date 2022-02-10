@@ -20,5 +20,7 @@ namespace epam_gmail_task.WebDriver
         public static string Browser => GetEnviromentVar("Browser", "Chrome");
         public static string StartUrl => GetEnviromentVar("StartUrl", "https://www.google.com/intl/ru/gmail/about/");
         public static string RemoteDriverUri => GetEnviromentVarBySection("RemoteDriverUri", "GridUri", "http://localhost:4444/wd/hub");
+        public static string Login => GetEnviromentVarBySection("users", "Login", "gt016618");
+        public static string Password => GetEnviromentVarBySection("users", "Password", "mAPM6SWd");
     }
 }
