@@ -22,5 +22,17 @@ namespace epam_gmail_task.PageObjects
         public string GetMessageSubject() => _mailMessageSpan.GetText();
         public void DeleteSelectedDrafts() => _deleteSelectedDraftsDiv.Click();
         public string GetNoSavedDraftMessage() => _noSavedDraftMessage.GetText();
+        public string GetSubjectValueByText(string subject)
+        {
+            BaseElement _subjectSpan =
+                new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
+            return _subjectSpan.GetText();
+        }
+        public bool CheckSubjectExistsByText(string subject)
+        {
+            BaseElement _subjectSpan =
+                new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
+            return _subjectSpan.Displayed;
+        }
     }
 }
