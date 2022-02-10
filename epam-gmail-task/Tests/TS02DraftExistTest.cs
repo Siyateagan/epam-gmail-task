@@ -11,7 +11,7 @@ namespace epam_gmail_task.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
             "|DataDirectory|\\UserData.csv", "UserData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
-        public override void TC00_TestPreparation() //TODO preparement
+        public override void TC00_TestPreparation()
         {
             base.TC00_TestPreparation();
             MainPage mainPage = new MainPage();
@@ -27,11 +27,7 @@ namespace epam_gmail_task.Tests
             DraftPage draftPage = new DraftPage();
             draftPage.ClickDraftLink();
 
-            // TODO Move to another layer?
-            string receiver = TestContext.DataRow["receiver"].ToString();
-            string subject = TestContext.DataRow["subject"].ToString();
-            string message = TestContext.DataRow["message"].ToString();
-            MailMessage mailMessage = new MailMessage(receiver, subject, message);
+            MailMessage mailMessage = new MailMessage(TestContext);
             Assert.AreEqual(mailMessage.subject, draftPage.GetSubjectValueByText(mailMessage.subject));
 
             draftPage.SelectLastMessage();

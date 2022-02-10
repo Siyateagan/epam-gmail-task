@@ -8,14 +8,13 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public class TS01SaveDraftTest : BaseTest
     {
-        //TODO: Check multiple users
         [DeploymentItem(@"Resourses")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
             "|DataDirectory|\\UserData.csv", "UserData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
         public void TC01_Check_CurrentAccount_Matches()
         {
-            User currentUser = GetUser();
+            User currentUser = new User(TestContext);
             MainPage mainPage = new MainPage();
             mainPage.ManageAccountClick();
 
@@ -32,13 +31,10 @@ namespace epam_gmail_task.Tests
             MainPage mainPage = new MainPage();
             mainPage.ClickWrite();
 
-            string receiver = TestContext.DataRow["receiver"].ToString();
-            string subject = TestContext.DataRow["subject"].ToString();
-            string message = TestContext.DataRow["message"].ToString();
-            MailMessage mailMessage = new MailMessage(receiver, subject, message);
-
+            MailMessage mailMessage = new MailMessage(TestContext);
             mainPage.EnterMessageData(mailMessage);
             mainPage.WaitForDraftSave();
+
             Assert.AreEqual(mainPage.GetDraftStatus(), "Черновик сохранен");
             mainPage.CloseNewMessageWindow();
         }

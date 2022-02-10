@@ -26,7 +26,7 @@ namespace epam_gmail_task.Tests
         [TestMethod]
         public virtual void TC00_TestPreparation()
         {
-            User currentUser = GetUser();
+            User currentUser = new User(TestContext);
 
             AboutPage aboutPage = new AboutPage();
             aboutPage.GoToSignInPage();
@@ -51,13 +51,6 @@ namespace epam_gmail_task.Tests
         {
             mainPageBase.ManageAccountClick();
             mainPageBase.SignOutClick();
-        }
-
-        protected User GetUser()
-        {
-            string login = TestContext.DataRow["login"].ToString();
-            string password = TestContext.DataRow["password"].ToString();
-            return new User(login, password);
         }
     }
 }

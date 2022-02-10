@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace epam_gmail_task.Entities
 {
@@ -11,10 +7,10 @@ namespace epam_gmail_task.Entities
         public readonly string email;
         public readonly string password;
 
-        public User(string email, string password)
+        public User(TestContext testContext)
         {
-            this.email = email;
-            this.password = password;
+            email = testContext.DataRow["login"].ToString();
+            password = testContext.DataRow["password"].ToString();
         }
     }
 }

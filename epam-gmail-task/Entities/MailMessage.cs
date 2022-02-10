@@ -1,4 +1,6 @@
-﻿namespace epam_gmail_task.Entities
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace epam_gmail_task.Entities
 {
     public class MailMessage
     {
@@ -6,11 +8,11 @@
         public readonly string subject;
         public readonly string message;
 
-        public MailMessage(string receiver, string subject, string message)
+        public MailMessage(TestContext testContext)
         {
-            this.receiver = receiver;
-            this.subject = subject;
-            this.message = message;
+            receiver = testContext.DataRow["receiver"].ToString();
+            subject = testContext.DataRow["subject"].ToString();
+            message = testContext.DataRow["message"].ToString();
         }
     }
 }
