@@ -1,6 +1,6 @@
 ﻿using epam_gmail_task.Entities;
 using epam_gmail_task.PageObjects;
-using epam_gmail_task.WebDriver;
+using epam_gmail_task.Resourses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace epam_gmail_task.Tests
@@ -16,7 +16,8 @@ namespace epam_gmail_task.Tests
             MainPage mainPage = new MainPage();
             mainPage.ManageAccountClick();
 
-            string expectedMail = Configuration.Login + "@gmail.com";
+            User user = new User();
+            string expectedMail = user.email + "@gmail.com";
             Assert.AreEqual(mainPage.GetCurrentAccountMail(), expectedMail);
         }
 

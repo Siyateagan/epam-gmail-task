@@ -1,5 +1,6 @@
 ﻿using epam_gmail_task.Entities;
 using epam_gmail_task.PageObjects;
+using epam_gmail_task.Resourses;
 using epam_gmail_task.WebDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,14 +23,15 @@ namespace epam_gmail_task.Tests
 
         protected virtual void SignIn()
         {
+            User user = new User();
             AboutPage aboutPage = new AboutPage();
             aboutPage.GoToSignInPage();
 
             SignInPage signInPage = new SignInPage();
-            signInPage.EnterEmail(Configuration.Login);
+            signInPage.EnterEmail(user.email);
             signInPage.ClickNext();
 
-            signInPage.EnterPassword(Configuration.Password);
+            signInPage.EnterPassword(user.password);
             signInPage.ClickNext();
         }
 
