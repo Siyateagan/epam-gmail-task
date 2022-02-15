@@ -1,5 +1,4 @@
-﻿using epam_gmail_task.WebDriver;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace epam_gmail_task.PageObjects
 {
@@ -27,12 +26,6 @@ namespace epam_gmail_task.PageObjects
             BaseElement _subjectSpan =
                 new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
             return _subjectSpan.GetText();
-        }
-        public bool CheckSubjectExistsByText(string subject)
-        {
-            BaseElement _subjectSpan =
-                new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
-            return _subjectSpan.Displayed;
         }
     }
 }

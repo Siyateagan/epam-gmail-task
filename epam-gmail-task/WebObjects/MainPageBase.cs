@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using System;
 
 namespace epam_gmail_task.PageObjects
 {
@@ -11,6 +12,9 @@ namespace epam_gmail_task.PageObjects
         public MainPageBase() : base(SignInLabel) { }
 
         protected MainPageBase(By titleLocator) : base(titleLocator) { }
+
+        protected readonly BaseElement _searchInput =
+            new BaseElement(By.XPath("//input[@aria-label='Поиск в почте']"));
 
         protected readonly BaseElement _writeDiv =
             new BaseElement(By.XPath("//div[@class='T-I T-I-KE L3']"));
@@ -36,10 +40,22 @@ namespace epam_gmail_task.PageObjects
         protected readonly BaseElement _closeNewMessageImg =
             new BaseElement(By.XPath("//img[@alt='Закрыть']"));
 
+        protected readonly BaseElement _sendMessageDiv =
+            new BaseElement(By.XPath("//div[text()='Отправить']"));
+
+        protected readonly BaseElement _sentMessagesLink =
+            new BaseElement(By.XPath("//a[text()='Отправленные']"));
+
+        protected readonly BaseElement _incomingMessagesLink =
+            new BaseElement(By.XPath("//a[text()='Входящие']"));
+
         public void ClickWrite() => _writeDiv.Click();
         public void ManageAccountClick() => _manageAccountLink.Click();
         public void SelectLastMessage() => _lastMessageDiv.Click();
         public void ClickDraftLink() => _draftLink.Click();
+        public void ClickSendMessage() => _sendMessageDiv.Click();
+        public void ClickSentMessages() => _sentMessagesLink.Click();
+        public void ClickIncomingMessages() => _incomingMessagesLink.Click();
         public void CloseNewMessageWindow() => _closeNewMessageImg.Click();
         public string GetCurrentAccountMail()
         {
@@ -57,6 +73,23 @@ namespace epam_gmail_task.PageObjects
         {
             WebDriverWait _frameWait = new WebDriverWait(Browser.GetDriver(), Browser.TimeoutForElement);
             _frameWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(_accountFrame.Locator));
+        }
+        public bool CheckSubjectExistsByText(string subject)
+        {
+            BaseElement _subjectSpan =
+                new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
+            return _subjectSpan.Displayed;
+        }
+
+        protected void WaitPageIsOpen(string pageInput)
+        {
+            WebDriverWait wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(30));
+            wait.Until(condition =>
+            {
+                if (_searchInput.GetElement().GetAttribute("value") != pageInput)
+                    return false;
+                else return true;
+            });
         }
     }
 }
