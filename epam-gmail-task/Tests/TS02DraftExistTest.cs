@@ -8,7 +8,7 @@ namespace epam_gmail_task.Tests
     public class TS02DraftExistTest : BaseTest
     {
         [TestMethod]
-        public void TC02_Navigate_Draft_PageExist()
+        public void TC03_Navigate_Draft_PageExist()
         {
             SignIn();
             MainPage mainPage = new MainPage();
@@ -19,7 +19,7 @@ namespace epam_gmail_task.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
             "|DataDirectory|\\MailMessageData.csv", "MailMessageData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
-        public void TC03_Remove_Draft_NotExist()
+        public void TC04_Remove_Draft_NotExist()
         {
             DraftPage draftPage = new DraftPage();
             draftPage.ClickDraftLink();

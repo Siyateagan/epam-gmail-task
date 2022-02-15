@@ -30,7 +30,7 @@ namespace epam_gmail_task.Tests
             SentPage sentPage = new SentPage();
             Assert.IsTrue(sentPage.CheckSubjectExistsByText(mailMessage.subject));
 
-            sentPage.ClickIncomingMessages();
+            sentPage.NavigateIncomingMessages();
             Assert.IsTrue(mainPage.CheckSubjectExistsByText(mailMessage.subject));
         }
     }

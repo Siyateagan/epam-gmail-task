@@ -55,7 +55,7 @@ namespace epam_gmail_task.PageObjects
         public void ClickDraftLink() => _draftLink.Click();
         public void ClickSendMessage() => _sendMessageDiv.Click();
         public void NavigateToSentMessages() => _sentMessagesLink.Click();
-        public void ClickIncomingMessages() => _incomingMessagesLink.Click();
+        public void NavigateIncomingMessages() => _incomingMessagesLink.Click();
         public void CloseNewMessageWindow() => _closeNewMessageImg.Click();
         public string GetCurrentAccountMail()
         {
