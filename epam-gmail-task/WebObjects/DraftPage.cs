@@ -7,7 +7,7 @@ namespace epam_gmail_task.PageObjects
         public DraftPage() : base(DraftLabel) { }
 
         private static readonly By DraftLabel =
-            By.XPath("//div[@aria-checked='false']");
+            By.XPath("(//div[@aria-checked='false'])[last()]");
 
         private readonly BaseElement _mailMessageSpan =
             new BaseElement(By.XPath("(//td//span[text()='Test Subject'])[2]"));
