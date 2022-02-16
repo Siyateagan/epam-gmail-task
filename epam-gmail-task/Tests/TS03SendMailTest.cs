@@ -12,6 +12,16 @@ namespace epam_gmail_task.Tests
     [TestClass]
     public class TS03SendMailTest : BaseTest
     {
+        MailMessage mailMessage;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            string receiver = Configuration.Login + "@gmail.com";
+            string subject = Browser.GetRandomSubject();
+            mailMessage = new MailMessage(receiver: receiver, subject: subject);
+        }
+
         [TestMethod]
         public void TC05_Check_Message_Sent()
         {
@@ -19,10 +29,6 @@ namespace epam_gmail_task.Tests
             MainPage mainPage = new MainPage();
             mainPage.ClickWrite();
 
-            string receiver = Configuration.Login + "@gmail.com";
-            string subject = Browser.GetRandomSubject();
-
-            MailMessage mailMessage = new MailMessage(receiver: receiver, subject: subject);
             mainPage.EnterMessageData(mailMessage);
             mainPage.ClickSendMessage();
 
