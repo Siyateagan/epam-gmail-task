@@ -2,6 +2,7 @@
 using epam_gmail_task.PageObjects;
 using epam_gmail_task.Resourses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace epam_gmail_task.Tests
 {
@@ -12,12 +13,16 @@ namespace epam_gmail_task.Tests
         [TestMethod]
         public void TC01_Check_CurrentAccount_Matches()
         {
-            SignIn();
-            MainPage mainPage = new MainPage();
-            mainPage.ManageAccountClick();
-
+            // arrange
             User user = new User();
             string expectedMail = user.email + "@gmail.com";
+            SignIn();
+            MainPage mainPage = new MainPage();
+
+            // act
+            mainPage.ManageAccountClick();
+
+            // assert
             Assert.AreEqual(mainPage.GetCurrentAccountMail(), expectedMail);
         }
 
@@ -27,15 +32,20 @@ namespace epam_gmail_task.Tests
         [TestMethod]
         public void TC02_Check_MailMessage_Saved()
         {
-            MainPage mainPage = new MainPage();
-            mainPage.ClickWrite();
-
+            // arrange
             MailMessage mailMessage = new MailMessage(TestContext);
+            MainPage mainPage = new MainPage();
+            string draftCounter = 
+                Convert.ToString(TestContext.DataRow.Table.Rows.IndexOf(TestContext.DataRow) + 1);
+
+            // act
+            mainPage.ClickWrite();
             mainPage.EnterMessageData(mailMessage);
             mainPage.WaitForDraftSave();
-
-            Assert.AreEqual(mainPage.GetDraftStatus(), "Черновик сохранен");
             mainPage.CloseNewMessageWindow();
+
+            // assert
+            Assert.AreEqual(mainPage.GetDraftCount(), draftCounter);
         }
     }
 }

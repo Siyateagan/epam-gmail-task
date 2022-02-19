@@ -33,6 +33,9 @@ namespace epam_gmail_task.PageObjects
         protected readonly BaseElement _draftLink =
             new BaseElement(By.XPath("//a[text()='Черновики']"));
 
+        protected readonly BaseElement _draftMessagesCounter =
+            new BaseElement(By.XPath("//a[text()='Черновики']/ancestor::span/following-sibling::div"));
+
         protected readonly BaseElement _accountFrame =
             new BaseElement(By.XPath("(//iframe[@role='presentation'])[2]"));
 
@@ -52,6 +55,7 @@ namespace epam_gmail_task.PageObjects
         public void ManageAccountClick() => _manageAccountLink.Click();
         public void SelectLastMessage() => _lastMessageDiv.Click();
         public void ClickDraftLink() => _draftLink.Click();
+        public string GetDraftCount() => _draftMessagesCounter.GetText();
         public void ClickSendMessage() => _sendMessageDiv.Click();
         public void NavigateToSentMessages() => _sentMessagesLink.Click();
         public void NavigateIncomingMessages() => _incomingMessagesLink.Click();
