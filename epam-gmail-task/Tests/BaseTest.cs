@@ -21,7 +21,7 @@ namespace epam_gmail_task.Tests
             Browser.NavigateTo(Configuration.StartUrl);
         }
 
-        protected virtual void SignIn()
+        protected static void SignIn()
         {
             User user = new User();
             AboutPage aboutPage = new AboutPage();

@@ -1,14 +1,15 @@
 ﻿using epam_gmail_task.Entities;
 using epam_gmail_task.PageObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace epam_gmail_task.Tests
 {
     [TestClass]
     public class TS02DraftExistTest : BaseTest
     {
-        [TestMethod]
-        public void TC03_Navigate_Draft_PageExist()
+        [ClassInitialize]
+        public static void StartUp(TestContext context)
         {
             SignIn();
             MainPage mainPage = new MainPage();
@@ -19,18 +20,25 @@ namespace epam_gmail_task.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
             "|DataDirectory|\\MailMessageData.csv", "MailMessageData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
-        public void TC04_Remove_Draft_NotExist()
+        public void TC03_Remove_Draft_NotExist()
         {
+            // arrange
             DraftPage draftPage = new DraftPage();
+            MailMessage mailMessage = new MailMessage(TestContext);
+
+            // act
             draftPage.ClickDraftLink();
 
-            MailMessage mailMessage = new MailMessage(TestContext);
-            Assert.AreEqual(mailMessage.subject, draftPage.GetSubjectValueByText(mailMessage.subject));
+            // assert
+            Assert.AreEqual(mailMessage.subject, draftPage.GetSubjectValueByText(mailMessage.subject));  
+        }
 
-            draftPage.SelectLastMessage();
+        [ClassCleanup]
+        public static void CleanUp()
+        {
+            DraftPage draftPage = new DraftPage();
+            draftPage.SelectAllMessages();
             draftPage.DeleteSelectedDrafts();
-
-            Assert.IsFalse(draftPage.CheckSubjectExistsByText(mailMessage.subject));
         }
     }
 }
