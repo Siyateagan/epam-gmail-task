@@ -6,7 +6,7 @@ using System;
 namespace epam_gmail_task.Tests
 {
     [TestClass]
-    public class TS02DraftExistTest : BaseTest
+    public class TC02DraftExistTest : BaseTest
     {
         [ClassInitialize]
         public static void StartUp(TestContext context)
@@ -20,7 +20,7 @@ namespace epam_gmail_task.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
             "|DataDirectory|\\MailMessageData.csv", "MailMessageData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
-        public void TC03_Remove_Draft_NotExist()
+        public void TM03_Remove_Draft_NotExist()
         {
             // arrange
             DraftPage draftPage = new DraftPage();

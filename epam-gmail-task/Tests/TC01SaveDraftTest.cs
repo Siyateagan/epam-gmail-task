@@ -8,10 +8,10 @@ namespace epam_gmail_task.Tests
 {
     [DeploymentItem(@"Resourses")]
     [TestClass]
-    public class TS01SaveDraftTest : BaseTest
+    public class TC01SaveDraftTest : BaseTest
     {
         [TestMethod]
-        public void TC01_Check_CurrentAccount_Matches()
+        public void TM01_Check_CurrentAccount_Matches()
         {
             // arrange
             User user = new User();
@@ -30,7 +30,7 @@ namespace epam_gmail_task.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
             "|DataDirectory|\\MailMessageData.csv", "MailMessageData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
-        public void TC02_Check_MailMessage_Saved()
+        public void TM02_Check_MailMessage_Saved()
         {
             // arrange
             MailMessage mailMessage = new MailMessage(TestContext);

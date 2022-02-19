@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace epam_gmail_task.Tests
 {
     [TestClass]
-    public class TS03SendMailTest : BaseTest
+    public class TC03SendMailTest : BaseTest
     {
         private static MailMessage mailMessage;
 
@@ -20,7 +20,7 @@ namespace epam_gmail_task.Tests
         }
 
         [TestMethod]
-        public void TC04_Check_Message_Sent()
+        public void TM04_Check_Message_Sent()
         {
             // arrange
             MainPage mainPage = new MainPage();
@@ -37,7 +37,7 @@ namespace epam_gmail_task.Tests
         }
 
         [TestMethod]
-        public void TC05_Check_Message_Received()
+        public void TM05_Check_Message_Received()
         {
             // arrange
             MainPage mainPage;
