@@ -1,42 +1,52 @@
 ﻿using epam_gmail_task.Entities;
 using epam_gmail_task.PageObjects;
 using epam_gmail_task.WebDriver;
-using epam_gmail_task.WebObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
-using System;
-using System.Threading;
 
 namespace epam_gmail_task.Tests
 {
     [TestClass]
     public class TS03SendMailTest : BaseTest
     {
-        MailMessage mailMessage;
+        private static MailMessage mailMessage;
 
-        [TestInitialize]
-        public void TestInitialize()
+        [ClassInitialize]
+        public static void StartUp(TestContext context)
         {
             string receiver = Configuration.Login + "@gmail.com";
             string subject = Browser.GetRandomSubject();
             mailMessage = new MailMessage(receiver: receiver, subject: subject);
+            SignIn();
         }
 
         [TestMethod]
-        public void TC05_Check_Message_Sent()
+        public void TC04_Check_Message_Sent()
         {
-            SignIn();
+            // arrange
             MainPage mainPage = new MainPage();
-            mainPage.ClickWrite();
+            SentPage sentPage;
 
+            // act
+            mainPage.ClickWrite();
             mainPage.EnterMessageData(mailMessage);
             mainPage.ClickSendMessage();
+            sentPage = mainPage.NavigateToSentMessages();
 
-            mainPage.NavigateToSentMessages();
-            SentPage sentPage = new SentPage();
+            // assert
             Assert.IsTrue(sentPage.CheckSubjectExistsByText(mailMessage.subject));
+        }
 
-            sentPage.NavigateIncomingMessages();
+        [TestMethod]
+        public void TC05_Check_Message_Received()
+        {
+            // arrange
+            MainPage mainPage;
+            SentPage sentPage = new SentPage();
+
+            // act
+            mainPage = sentPage.NavigateIncomingMessages();
+
+            // assert
             Assert.IsTrue(mainPage.CheckSubjectExistsByText(mailMessage.subject));
         }
     }
