@@ -4,12 +4,8 @@ namespace epam_gmail_task.PageObjects
 {
     public class SentPage : MainPageBase
     {
-        private readonly string pageInput = "in:sent ";
-        private static readonly By SentLabel = By.XPath("//input[@aria-label='Поиск в почте']");
+        private static readonly By SentLabel = By.XPath("//a[text()='Отправленные' and @tabindex='0']");
 
-        public SentPage() : base(SentLabel)
-        {
-            WaitPageIsOpen(pageInput);
-        } 
+        public SentPage() : base(SentLabel) { }
     }
 }

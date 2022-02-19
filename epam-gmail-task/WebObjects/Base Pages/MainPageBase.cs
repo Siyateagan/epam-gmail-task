@@ -2,7 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using System;
 
 namespace epam_gmail_task.PageObjects
 {
@@ -79,17 +78,6 @@ namespace epam_gmail_task.PageObjects
             BaseElement _subjectSpan =
                 new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
             return _subjectSpan.Displayed;
-        }
-
-        protected void WaitPageIsOpen(string pageInput)
-        {
-            WebDriverWait wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(30));
-            wait.Until(condition =>
-            {
-                if (_searchInput.GetElement().GetAttribute("value") != pageInput)
-                    return false;
-                else return true;
-            });
         }
     }
 }
