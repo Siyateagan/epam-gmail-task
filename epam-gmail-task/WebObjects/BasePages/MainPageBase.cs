@@ -79,5 +79,11 @@ namespace epam_gmail_task.PageObjects
                 new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
             return _subjectSpan.Displayed;
         }
+        public string GetSubjectValueByText(string subject)
+        {
+            BaseElement _subjectSpan =
+                new BaseElement(By.XPath($"(//span[text()='{subject}'])[2]"));
+            return _subjectSpan.GetText();
+        }
     }
 }
